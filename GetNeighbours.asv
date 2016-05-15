@@ -1,0 +1,5 @@
+function neighboursIndex = GetNeighbours(a, image)
+
+workImage = 
+
+end
