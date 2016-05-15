@@ -5,7 +5,7 @@ resultErr = 0;
 
 for i = 1 : n
     neighboursIndex = GetNeighbours(a, learnImage, newImage(i, 1));
-    k = size(neighbourIndex);
+    k = size(neighboursIndex);
     class1count = 0; class2count = 0; class =  2;
     
     for j = 1 : k
