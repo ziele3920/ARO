@@ -1,0 +1,6 @@
+function resultErr = aNN(learnImage, newImage, a)
+
+sortedLearn = 
+
+end
+
