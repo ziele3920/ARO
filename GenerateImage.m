@@ -4,9 +4,9 @@ result = zeros(n, 2);
 
 for i = 1 : n
    
-    divider = rand();
+    divider = rand;
     
-    if divider > p1 
+    if divider < p1 
         result(i,1) = normrnd(m1, sig1);
         result(i,2) = 1;
     else
