@@ -1,9 +1,0 @@
-function resultErr = aNN(learnImage, newImage, a)
-
-[n, m] = size(learnImage);
-
-for i = 1 : n
-neighboursIndex = GetNeighbours(a, learnImage, newImage(i, 1));
-for
-end
-
