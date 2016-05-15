@@ -1,4 +1,4 @@
-function result = GenerateImage(n, p1, m1, sig1, m2, sig2)
+function result = GenerateImageN(n, p1, m1, sig1, m2, sig2)
 
 result = zeros(n, 2);
 
