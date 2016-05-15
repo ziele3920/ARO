@@ -1,7 +1,7 @@
 function resultErr = aNN(learnImage, newImage, a)
 
 resultErr = 0;
-[n, m] = size(learnImage);
+[n, m] = size(newImage);
 
 for i = 1 : n
     neighboursIndex = GetNeighbours(a, learnImage, newImage(i, 1));
@@ -13,7 +13,7 @@ for i = 1 : n
         if learnImage(neighboursIndex(j), 2) == 1
             class1count = class1count + 1;
         else
-            class2count = class2count + 2;
+            class2count = class2count + 1;
         end
     end
     
