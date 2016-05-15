@@ -1,12 +1,7 @@
-repeats = 10; steps = 5; littleSteps = 40;
-nLearn = 10; nStep = 10; nSub = 1000000;
-p1 = 0.43;
-mi1 = 100; sig1 = 40;
-mi2 = 200; sig2 = 45;
+function result = CountErrMNN(steps, nLStep0, stepMultipler, littleSteps, nSub, p1, mi1, sig1, mi2, sig2)
 
+nLearn = nLStep0;
 result = zeros(steps, 2);
-
-
 
 for i = 1 : steps
     result(i,1) = nLearn;
@@ -15,10 +10,9 @@ for i = 1 : steps
         learnImageN = GenerateImageN(nLearn, p1, mi1, sig1, mi2, sig2);
         result(i,2) = result(i,2) + MN(learnImageN, subImage);
     end
-    nLearn = nLearn * nStep;
+    nLearn = nLearn * stepMultipler;
     result(i,2) = result(i,2)/(littleSteps * nSub);
 end
-
-result
+end
 
 
