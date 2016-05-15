@@ -7,10 +7,10 @@ for i = 1 : n
     divider = rand;
     
     if divider < p1 
-        result(i,1) = randi([a1 b1],1,1);
+        result(i,1) = rand * (b1-a1) + a1;
         result(i,2) = 1;
     else
-        result(i,1) = randi([a2 b2],1,1);
+        result(i,1) = rand * (b2-a2) + a2;
         result(i,2) = 2;
     end
     

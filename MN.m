@@ -4,9 +4,9 @@ sum1 = 0; count1 = 0;
 sum2 = 0; count2 = 0;
 
 resultErr = 0;
-[n, m] = size(learnImage);
+[nLearn, m] = size(learnImage);
 
-for i =  1 : n 
+for i =  1 : nLearn
    
     if learnImage(i, 2) == 1
         sum1 = sum1 + learnImage(i,1);
@@ -21,7 +21,9 @@ end
 mi1 = sum1/count1;
 mi2 = sum2/count2;
 
-for i = 1 : n 
+[nSub, m] = size(newImage);
+
+for i = 1 : nSub
    
     x = newImage(i,1);
     class = 2;
