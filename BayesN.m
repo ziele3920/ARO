@@ -7,7 +7,7 @@ for i = 1 : n
     
    class = 2;
    
-    if p1*DestinyFunctionN(mi1, sig1, subjectImage(i, 1)) > p2 * DestinyFunctionN(mi2, sig2, subjectImage(i, 1))
+    if p1*normpdf(subjectImage(i, 1),mi1, sig1) > p2 * normpdf(subjectImage(i, 1), mi2, sig2)
         class = 1;
     end
     

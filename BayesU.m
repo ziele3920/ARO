@@ -6,7 +6,7 @@ resultErr = 0;
 for i = 0 : n
  
     class = 2;
-    if p1*DestinyFunctionU(a, b) > p2 * DestinyFunctionU(a, b)
+    if p1*unipdf(subjectImage(i, 1), a, b) > p2 * unipdf(subjectImage(i, 1), a, b)
         class = 1;
     end
     
