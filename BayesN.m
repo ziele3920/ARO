@@ -2,7 +2,7 @@ function resultErr = BayesN(subjectImage, p1, mi1, sig1, mi2, sig2)
 
 resultErr = 0;
 [n, m] = size(subjectImage);
-
+p2 = 1 - p1;
 for i = 1 : n
     
    class = 2;

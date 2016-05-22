@@ -1,12 +1,12 @@
-function resultErr = BayesU(subjectImage, a, b)
+function resultErr = BayesU(subjectImage,p1, a1, b1, a2, b2)
 
 [n, m] = size(subjectImage);
 resultErr = 0;
-
-for i = 0 : n
+p2 = 1 - p1;
+for i = 1 : n
  
     class = 2;
-    if p1*unipdf(subjectImage(i, 1), a, b) > p2 * unipdf(subjectImage(i, 1), a, b)
+    if p1*unifpdf(subjectImage(i, 1), a1, b1) > p2 * unifpdf(subjectImage(i, 1), a2, b2)
         class = 1;
     end
     
