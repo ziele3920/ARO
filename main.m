@@ -5,8 +5,8 @@ clc;
 N=3;
 NLstep0 = 10;
 stepmultiper = 10;
-littlesteps = 10;
-Nsub = 1000;
+littlesteps = 40;
+nSub = 1000;
 %Jaki rozk³ad badamy 1-normalny,2 - jednostajny
 Rozklad=1;
 a1 = 200;
@@ -20,25 +20,42 @@ m2 = [250,250,1,1,1,1,5,5,7,7];
 p1 = [0.25,0.5];
 p2 = [0.75,0.5];
 alfa = [1,3,5];
-ErrMNN = zeros(10,3,2);
-ErrMNU = zeros(10,3,2);
-ErraNNU = zeros(10,3,3,2);
-ErraNNN = zeros(10,3,3,2);
-ErrBayesN = zeros(10,3,2);
-ErrBayesU = zeros(10,3,2);
+ErrMNN = zeros(10,N,2);
+ErrMNU = zeros(10,N,2);
+ErraNNU = zeros(10,3,N,2);
+ErraNNN = zeros(10,3,N,2);
+ErrBayesN = zeros(10,N,2);
+ErrBayesU = zeros(10,N,2);
 
 
-for i = 1 :10
-     ErrMNN(i,:,:) =  CountErrMNN(N, NLstep0,stepmultiper,littlesteps,Nsub , p1(rem(i,2)+1) , m1(i), sig1(i), m2(i), sig2(i));
-     ErrMNU(i,:,:) = CountErrMNU(N, NLstep0,stepmultiper,littlesteps,Nsub , p1(rem(i,2)+1) , a1,b1,a2(i),b2(i));
-     for j = 1 : 3
-        ErraNNU(i,j,:,:) = CountErraNNU(alfa(j),N,NLstep0,stepmultiper,littlesteps,Nsub,p1(rem(i,2)+1),a1,b1,a2(i),b2(i));
-        ErraNNN(i,j,:,:) = CountErraNNN(alfa(j),N,NLstep0,stepmultiper,littlesteps,Nsub,p1(rem(i,2)+1),m1(i), sig1(i), m2(i), sig2(i));
+for i = 1 : 1
+     subImageN = GenerateImageN(nSub, p1(rem(i,2)+1) , m1(i), sig1(i), m2(i), sig2(i));
+     subImageU = GenerateImageU(nSub, p1(rem(i,2)+1) , a1,b1,a2(i),b2(i));
+     ErrMNN(i,:,:) =  CountErrMNN(N, NLstep0,stepmultiper,littlesteps, subImageN , p1(rem(i,2)+1) , m1(i), sig1(i), m2(i), sig2(i));
+     ErrMNU(i,:,:) = CountErrMNU(N, NLstep0,stepmultiper,littlesteps,subImageU , p1(rem(i,2)+1) , a1,b1,a2(i),b2(i));
+     %for j = 1 : 3
+     %   ErraNNU(i,j,:,:) = CountErraNNU(alfa(j),N,NLstep0,stepmultiper,littlesteps,subImageU,p1(rem(i,2)+1),a1,b1,a2(i),b2(i));
+      %  ErraNNN(i,j,:,:) = CountErraNNN(alfa(j),N,NLstep0,stepmultiper,littlesteps,subImageN,p1(rem(i,2)+1),m1(i), sig1(i), m2(i), sig2(i));
         
-     end
-     ErrBayesN(i,:,:) = CountErrBayesN(N, NLstep0,stepmultiper,littlesteps,Nsub , p1(rem(i,2)+1) , m1(i), sig1(i), m2(i), sig2(i));
-     ErrBayesU(i,:,:) = CountErrBayesU(N, NLstep0,stepmultiper,littlesteps,Nsub , p1(rem(i,2)+1) , a1, b1, a2(i), b2(i));
+    % end
+     ErrBayesN(i,:,:) = CountErrBayesN(N, NLstep0,stepmultiper,littlesteps,subImageN , p1(rem(i,2)+1) , m1(i), sig1(i), m2(i), sig2(i));
+     ErrBayesU(i,:,:) = CountErrBayesU(N, NLstep0,stepmultiper,littlesteps,subImageU, p1(rem(i,2)+1) , a1, b1, a2(i), b2(i));
 end
 %PROGRAM G£ÓWNY
 
+h = figure;
+plot(ErrMNN(1,:,1),(ErrMNN(1,:,2)),'mo-');
+hold on;
+grid on;
+plot(ErrMNU(1,:,1),(ErrMNU(1,:,2)),'bx-');
+plot(ErrMNU(1,:,1),(ErrMNU(1,:,2)),'r+-');
+plot(ErrBayesN(1,:,1),(ErrBayesN(1,:,2)),'c*-');
+plot(ErrBayesU(1,:,1),(ErrBayesU(1,:,2)),'r+-');
+hold on;
+grid on;
 
+%plot(N_P,(Bledy(:,5)),'ks-');
+%plot(Rozpoznanie(7,:),'g');
+%legend('NM','NN alpha = 1','NN alpha = 3','NN alpha = 5','Bayes','Ryzyko');
+%print(h,'-djpeg','wykres_6.jpg');
+%
