@@ -27,8 +27,10 @@ ErraNNN = zeros(10,3,N,2);
 ErrBayesN = zeros(10,N,2);
 ErrBayesU = zeros(10,N,2);
 
+%tutaj sobie tyczmasowo ustawiam dla którego zestawu parametrów chce liczyæ
+z = 2;
 
-for i = 1 : 1
+for i = z : z
      subImageN = GenerateImageN(nSub, p1(rem(i,2)+1) , m1(i), sig1(i), m2(i), sig2(i));
      subImageU = GenerateImageU(nSub, p1(rem(i,2)+1) , a1,b1,a2(i),b2(i));
      ErrMNN(i,:,:) =  CountErrMNN(N, NLstep0,stepmultiper,littlesteps, subImageN , p1(rem(i,2)+1) , m1(i), sig1(i), m2(i), sig2(i));
@@ -44,13 +46,13 @@ end
 %PROGRAM G£ÓWNY
 
 h = figure;
-plot(ErrMNN(1,:,1),(ErrMNN(1,:,2)),'mo-');
+plot(ErrMNN(z,:,1),(ErrMNN(z,:,2)),'mo-');
 hold on;
 grid on;
-plot(ErrMNU(1,:,1),(ErrMNU(1,:,2)),'bx-');
-plot(ErrMNU(1,:,1),(ErrMNU(1,:,2)),'r+-');
-plot(ErrBayesN(1,:,1),(ErrBayesN(1,:,2)),'c*-');
-plot(ErrBayesU(1,:,1),(ErrBayesU(1,:,2)),'r+-');
+plot(ErrMNU(z,:,1),(ErrMNU(z,:,2)),'bx-');
+plot(ErrMNU(z,:,1),(ErrMNU(z,:,2)),'r+-');
+plot(ErrBayesN(z,:,1),(ErrBayesN(z,:,2)),'c*-');
+plot(ErrBayesU(z,:,1),(ErrBayesU(z,:,2)),'r+-');
 hold on;
 grid on;
 
