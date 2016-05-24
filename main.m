@@ -1,12 +1,13 @@
 %przygotowanie œrodowiska
 clear;
+close all;
 clc;
 %iloœæ obrazów
-N=2;
-NLstep0 = 10;
-stepmultiper = 10;
+N=8;
+NLstep0 = 5;
+stepmultiper = 5;
 littlesteps = 40;
-nSub = 1000;
+nSub = 10^5;
 %Jaki rozk³ad badamy 1-normalny,2 - jednostajny
 Rozklad=1;
 a1 = 200;
@@ -49,16 +50,18 @@ z = 2;
 lineWidth = 2;
 hN = figure(1);
 subplot(121);
-plot(ErrMNN(:,1),(ErrMNN(:,2)),'mo-', 'LineWidth', lineWidth);
+semilogx(ErrMNN(:,1),(ErrMNN(:,2)),'mo-', 'LineWidth', lineWidth);
+%plot(ErrMNN(:,1),(ErrMNN(:,2)),'mo-', 'LineWidth', lineWidth);
 hold on;
 grid on;
-plot(ErrBayesN(:,1),(ErrBayesN(:,2)),'c*-', 'LineWidth', lineWidth);
-plot(ErrBayesN(:,1),(ErraNNN(1,:,2)),'bx-', 'LineWidth', lineWidth);
-plot(ErrBayesN(:,1),(ErraNNN(2,:,2)),'r+-', 'LineWidth', lineWidth);
-plot(ErrBayesN(:,1),(ErraNNN(3,:,2)),'ks-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErrBayesN(:,2)),'c*-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErraNNN(1,:,2)),'bx-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErraNNN(2,:,2)),'r+-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErraNNN(3,:,2)),'ks-', 'LineWidth', lineWidth);
 %trza tutaj jeszcze plotn¹æ teoretyczne ryzyko
 
-legend('MN', 'Bayes', '1-NN','3-NN', '5-NN');
+
+%legend('MN', 'Bayes', '1-NN','3-NN', '5-NN');
 str = sprintf('Przypadek %d dla rozk³adu normalnego',z);
 xlabel('d³ugoœæ ci¹gu ucz¹cego');
 ylabel('u³amek b³êdnej klasyfikacji');
@@ -66,16 +69,16 @@ title(str);
 
 
 subplot(122);
-plot(ErrMNU(:,1),(ErrMNU(:,2)),'mo-', 'LineWidth', lineWidth);
+semilogx(ErrMNU(:,1),(ErrMNU(:,2)),'mo-', 'LineWidth', lineWidth);
 hold on;
 grid on;
-plot(ErrBayesN(:,1),(ErrBayesU(:,2)),'c*-', 'LineWidth', lineWidth);
-plot(ErrBayesN(:,1),(ErraNNU(1,:,2)),'bx-', 'LineWidth', lineWidth);
-plot(ErrBayesN(:,1),(ErraNNU(2,:,2)),'r+-', 'LineWidth', lineWidth);
-plot(ErrBayesN(:,1),(ErraNNU(3,:,2)),'ks-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErrBayesU(:,2)),'c*-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErraNNU(1,:,2)),'bx-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErraNNU(2,:,2)),'r+-', 'LineWidth', lineWidth);
+semilogx(ErrBayesN(:,1),(ErraNNU(3,:,2)),'ks-', 'LineWidth', lineWidth);
 %trza tutaj jeszcze plotn¹æ teoretyczne ryzyko
 
-legend('MN', 'Bayes', '1-NN','3-NN', '5-NN');
+%legend('MN', 'Bayes', '1-NN','3-NN', '5-NN');
 str = sprintf('Przypadek %d dla rozk³adu równomiernego',z);
 xlabel('d³ugoœæ ci¹gu ucz¹cego');
 ylabel('u³amek b³êdnej klasyfikacji');
