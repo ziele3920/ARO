@@ -1,12 +1,28 @@
 \section{Wstęp}
 	\subsection{Cel projektu}
-	
 
-	Celem projektu jest zaprojektowanie i przeprowadzenie badań jakości heurystycznych algorytmów rozpoznawania obrazów z uczeniem typu $NM$  (najbliższa średnia) oraz $\alpha-NN$ ($\alpha$-najbliższych sąsiadów, $ \alpha=1,3,4$) Na przykładzie zadania rozpoznawania obrazów jednowymiarowych ($d=1$) pochodzących z $M = 2$ klas, które występują z prawdopodobieństwem $p_1$ oraz $p_2 (p_1,p_2>0, p_1+p_2=1)$ a rozkład cech x w klasach jest odpowiednio:
+	Celem projektu jest zaprojektowanie i przeprowadzenie badań jakości heurystycznych algorytmów rozpoznawania obrazów z uczeniem typu $NM$  (najbliższa średnia) oraz $\alpha-NN$ ($\alpha$-najbliższych sąsiadów, $ \alpha=1,3,4$) Na przykładzie zadania rozpoznawania obrazów jednowymiarowych ($d=1$) pochodzących z $M = 2$ klas, które występują z prawdopodobieństwem $p_1$ oraz $p_2 (p_1,p_2>0, p_1+p_2=1)$ a rozkład cech $x$ w klasach jest odpowiednio:
 	\begin{enumerate}
 	\item równomierny $f_1(x)=U(a_1,b_1), f_2(x)=U(a_2,b_2)$
 	\item normalny $f_1(x)=N(\mu_1, \sigma_1), f_2=N(\mu_2, \sigma_2)$
 	\end{enumerate}
+	Kolejnym etapem badania jest porównanie empirycznej skuteczności optymalnej (bayesowkiej) reguły rozpoznawania przy założeniu znajomości pełnej informacji probabilistycznej z teoretyczną skutecznością wyliczoną na podstawie ryzyka Bayesa dla 0-1 funkcji strat. Należy również porównać skuteczność optymalnej reguły rozpoznawania ze skutecznością algorytmów $NM$ oraz $\alpha-NN$.
 	
 	\subsection{Opis badań}
 	
+	W celu wyznaczenia empirycznych skuteczności algorytmów dla różnych przypadków korelacji rozkładów cech między klasami wybrano po pięć zestawów parametrów dla każdego z rozkładów. Do każdego przypadku wybrano po dwie wartości $p_1$ wynoszące $p1=0.5$ oraz $p_1=0.25$. W ten sposób otrzymano dziesięć przypadków testowych. Ponadto dla algorytmu $\alpha-NN$ doszły trzy wartości parametru $\alpha$ zatem ogólna liczba zaprojektowanych przypadków to dziesięć dla algorytmów $MN$ oraz optymalnej reguły rozpoznawania. Dla algorytmu $\alpha-NN$ liczba przypadków wynosi 30 ze względu na dodatkowy parametr $\alpha$. \newline
+	Dla wszystkich przypadków przeprowadzono eksperymenty z wykorzystaniem obrazów generowanych przy użycia generatora liczb losowych w środowisku  Matlab.
+	Wyznaczono wartości ryzyka Bayesa dla $0-1$ funkcji strat i porównano jej wartości z empiryczną skutecznością reguły optymalnej. \newline
+	Na koniec porównano doświadczalną skuteczność wszystkich badanych algorytmów dla różnych przypadków testowych.
+	
+	\subsection{Opis algorytmu badawczego}
+	
+	Dla każdego zestawu parametrów:
+	\begin{enumerate}
+	\item losuj ciąg obrazów do rozpoznania o długości $n = 10^5$ dla odpowiednich parametrów rozkładu,
+	\item losuj ciąg uczący o odpowiedniej długości dla aktualnych parametrów rozkładu,
+	\item wykonaj każdy z algorytmów rozpoznawania po $i = 100$  razy,
+	\item zapamiętaj uśrednioną, procentową wartość błędnych przyporządkowań dla każdego z algorytmów przy danych parametrach ,
+	\item powtórz kroki 2-4 dla zwiększających się długości ciągu uczącego
+	\item powtórz powyższe kroki dla każdego przypadku testowego,
+	\end{enumerate}
