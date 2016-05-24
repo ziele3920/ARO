@@ -46,15 +46,16 @@ z = 2;
 %PROGRAM G£ÓWNY
 
 
+lineWidth = 2;
 hN = figure(1);
 subplot(121);
-plot(ErrMNN(:,1),(ErrMNN(:,2)),'mo-');
+plot(ErrMNN(:,1),(ErrMNN(:,2)),'mo-', 'LineWidth', lineWidth);
 hold on;
 grid on;
-plot(ErrBayesN(:,1),(ErrBayesN(:,2)),'c*-');
-plot(ErrBayesN(:,1),(ErraNNN(1,:,2)),'bx-');
-plot(ErrBayesN(:,1),(ErraNNN(2,:,2)),'r+-');
-plot(ErrBayesN(:,1),(ErraNNN(3,:,2)),'ks-');
+plot(ErrBayesN(:,1),(ErrBayesN(:,2)),'c*-', 'LineWidth', lineWidth);
+plot(ErrBayesN(:,1),(ErraNNN(1,:,2)),'bx-', 'LineWidth', lineWidth);
+plot(ErrBayesN(:,1),(ErraNNN(2,:,2)),'r+-', 'LineWidth', lineWidth);
+plot(ErrBayesN(:,1),(ErraNNN(3,:,2)),'ks-', 'LineWidth', lineWidth);
 %trza tutaj jeszcze plotn¹æ teoretyczne ryzyko
 
 legend('MN', 'Bayes', '1-NN','3-NN', '5-NN');
@@ -65,13 +66,13 @@ title(str);
 
 
 subplot(122);
-plot(ErrMNU(:,1),(ErrMNU(:,2)),'mo-');
+plot(ErrMNU(:,1),(ErrMNU(:,2)),'mo-', 'LineWidth', lineWidth);
 hold on;
 grid on;
-plot(ErrBayesN(:,1),(ErrBayesU(:,2)),'c*-');
-plot(ErrBayesN(:,1),(ErraNNU(1,:,2)),'bx-');
-plot(ErrBayesN(:,1),(ErraNNU(2,:,2)),'r+-');
-plot(ErrBayesN(:,1),(ErraNNU(3,:,2)),'ks-');
+plot(ErrBayesN(:,1),(ErrBayesU(:,2)),'c*-', 'LineWidth', lineWidth);
+plot(ErrBayesN(:,1),(ErraNNU(1,:,2)),'bx-', 'LineWidth', lineWidth);
+plot(ErrBayesN(:,1),(ErraNNU(2,:,2)),'r+-', 'LineWidth', lineWidth);
+plot(ErrBayesN(:,1),(ErraNNU(3,:,2)),'ks-', 'LineWidth', lineWidth);
 %trza tutaj jeszcze plotn¹æ teoretyczne ryzyko
 
 legend('MN', 'Bayes', '1-NN','3-NN', '5-NN');
