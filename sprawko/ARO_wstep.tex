@@ -11,7 +11,7 @@
 	\subsection{Opis badań}
 	
 	W celu wyznaczenia empirycznych skuteczności algorytmów dla różnych przypadków korelacji rozkładów cech między klasami wybrano po pięć zestawów parametrów dla każdego z rozkładów. Do każdego przypadku przyporządkowano po dwie wartości $p_1$ wynoszące $p_1=0.25$ oraz $p_1=0.5$. W ten sposób otrzymano dziesięć przypadków testowych. Ponadto dla algorytmu $\alpha-NN$ doszły trzy wartości parametru $\alpha$, zatem ogólna liczba zaprojektowanych przypadków to dziesięć dla algorytmów $MN$ oraz dla optymalnej reguły rozpoznawania. Dla algorytmu $\alpha-NN$ liczba przypadków wynosi 30 ze względu na dodatkowy parametr $\alpha$. \newline
-	Dla wszystkich przypadków przeprowadzono eksperymenty z wykorzystaniem obrazów generowanych przy użyciu generatora liczb losowych w środowisku  Matlab. Badanie przeprowadzono dla długości ciągów uczących od $5$ do $390 625$ rosnących logarytmicznie ($log_5$). Natomiast ciąg z obrazami do klasyfikowania zawsze składał się z $10^5$ elementów.
+	Dla wszystkich przypadków przeprowadzono eksperymenty z wykorzystaniem obrazów generowanych przy użyciu generatora liczb losowych w środowisku  Matlab. Badanie przeprowadzono dla długości ciągów uczących od $5$ do $15 625$ rosnących logarytmicznie ($log_5$). Natomiast ciąg z obrazami do klasyfikowania zawsze składał się z $10^4$ elementów.
 	Wyznaczono wartości ryzyka Bayesa dla $0-1$ funkcji strat i porównano jej wartości z empiryczną skutecznością reguły optymalnej. \newline
 	Na koniec porównano doświadczalną skuteczność wszystkich badanych algorytmów dla różnych przypadków testowych.
 	
@@ -19,9 +19,9 @@
 	
 	Dla każdego zestawu parametrów:
 	\begin{enumerate}
-	\item losuj ciąg obrazów do rozpoznania o długości $n = 10^5$ dla odpowiednich parametrów rozkładu,
+	\item losuj ciąg obrazów do rozpoznania o długości $n = 10^4$ dla odpowiednich parametrów rozkładu,
 	\item losuj ciąg uczący o odpowiedniej długości dla aktualnych parametrów rozkładu,
-	\item wykonaj każdy z algorytmów rozpoznawania po $i = 40$  razy,
+	\item wykonaj każdy z algorytmów rozpoznawania po $i = 20$  razy,
 	\item zapamiętaj uśrednioną, ułamkową wartość\footnote{Stosunek ilości błędnie sklasyfikowanych obrazów do całkowitej liczby klasyfikowanych obrazów.} błędnych przyporządkowań dla każdego z algorytmów przy danych parametrach ,
 	\item powtórz kroki 2-4 dla zwiększających się długości ciągu uczącego\footnote{Dla długości ciągu $5^j$, gdzie $j$ - numer iteracji.}
 	\item powtórz powyższe kroki dla każdego przypadku testowego,
